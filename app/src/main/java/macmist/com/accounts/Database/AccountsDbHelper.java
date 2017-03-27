@@ -1,6 +1,8 @@
 package macmist.com.accounts.Database;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -61,5 +63,85 @@ public class AccountsDbHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    // # Operations on account table
 
+    // Insertion
+    public boolean insertAccount(String name, int amount) {
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(ACCOUNT_COLUMN_NAME, name);
+        contentValues.put(ACCOUNT_COLUMN_INITIAL_AMOUNT, amount);
+        contentValues.put(ACCOUNT_COLUMN_AMOUNT, amount);
+        long res = db.insert(ACCOUNT_TABLE_NAME, null, contentValues);
+        return res != -1;
+    }
+
+    // Update
+    public boolean updateAccount(int id, String name, int initialAmount, int amount) {
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(ACCOUNT_COLUMN_NAME, name);
+        contentValues.put(ACCOUNT_COLUMN_INITIAL_AMOUNT, initialAmount);
+        contentValues.put(ACCOUNT_COLUMN_AMOUNT, amount);
+        long res = db.update(ACCOUNT_TABLE_NAME, contentValues, ACCOUNT_COLUMN_ID + " = ? ",  new String[] { Integer.toString(id) } );
+        return res != -1;
+    }
+
+    public Cursor getAccountById(int id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor res = db.rawQuery( "SELECT * FROM " + ACCOUNT_TABLE_NAME + " WHERE " +
+                ACCOUNT_COLUMN_ID + "=?", new String[] { Integer.toString(id) } );
+        return res;
+    }
+
+    public Cursor getAllAccounts() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor res = db.rawQuery( "SELECT * FROM " + ACCOUNT_TABLE_NAME, null );
+        return res;
+    }
+
+
+    // # Operations on transaction table
+
+    // Insertion
+    public boolean insertTransaction(int account, String name, int amount) {
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(TRANSACTION_COLUMN_ACCOUNT_ID, account);
+        contentValues.put(TRANSACTION_COLUMN_NAME, name);
+        contentValues.put(TRANSACTION_COLUMN_AMOUNT, amount);
+        long res = db.insert(TRANSACTION_TABLE_NAME, null, contentValues);
+        return res != -1;
+    }
+
+    // Update
+    public boolean updateTransaction(int id, int account, String name, int amount) {
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(TRANSACTION_COLUMN_ACCOUNT_ID, account);
+        contentValues.put(TRANSACTION_COLUMN_NAME, name);
+        contentValues.put(TRANSACTION_COLUMN_AMOUNT, amount);
+        long res = db.update(TRANSACTION_TABLE_NAME, contentValues, TRANSACTION_COLUMN_ID + " = ? ",  new String[] { Integer.toString(id) } );
+        return res != -1;
+    }
+
+    public Cursor getTransactionById(int id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor res = db.rawQuery( "SELECT * FROM " + TRANSACTION_TABLE_NAME + " WHERE " +
+                TRANSACTION_COLUMN_ID + "=?", new String[] { Integer.toString(id) } );
+        return res;
+    }
+
+    public Cursor getAllTransactions() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor res = db.rawQuery( "SELECT * FROM " + TRANSACTION_TABLE_NAME, null );
+        return res;
+    }
+
+    public Cursor getAccountTransactions(int account) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor res = db.rawQuery( "SELECT * FROM " + TRANSACTION_TABLE_NAME + " WHERE " +
+                TRANSACTION_COLUMN_ACCOUNT_ID + "=?", new String[] { Integer.toString(account) }  );
+        return res;
+    }
 }
