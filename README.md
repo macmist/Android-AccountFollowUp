@@ -11,4 +11,8 @@ It is not builded in order to replace any bank app or whatever.
 
 ## Progression
 
-- 27/03 : Creation of the project
+- 03/27/2017 : 
+    * Creation of the project
+    * Database creation
+- 03/28/2017 :
+    * Database insertion, update and select
