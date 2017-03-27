@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">Accounts</string>
+    <string name="app_name">Accounts Follow Up</string>
+    <string name="hello_message">Hello World!</string>
 </resources>
