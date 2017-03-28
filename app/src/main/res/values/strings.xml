@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">Accounts Follow Up</string>
     <string name="hello_message">Hello World!</string>
-    <string name="title_activity_account_list">account_list</string>
+    <string name="title_activity_account_list">Account_list</string>
+    <string name="title_activity_create_account">Create account</string>
+    <string name="title_activity_account_details">Account details</string>
     <string name="add_account">Add account</string>
     <string name="account_name">Account name</string>
     <string name="account_initial_amount">Initial amount</string>
@@ -10,4 +12,6 @@
     <string name="currency">£</string>
     <string name="account_inserted_ok">Account saved</string>
     <string name="account_inserted_error">Could not save account</string>
+    <string name="transaction_list_header">Last transactions</string>
 </resources>
+

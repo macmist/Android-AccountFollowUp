@@ -22,10 +22,15 @@ It is not builded in order to replace any bank app or whatever.
     * Better display
     * Toast messages now available in french
     * Add a trigger that changes account amount when inserting an entry in transaction
+- 03/29/2017 :
+    * Corrected an issue with names in database
+    * Separated create and details activity for account
     
 ## Screenshots
 (will change in time)
 <img src="./Screenshots/acount_list_en.png" alt="Account List" style="width: 200px;"/>  
    Main view
 <img src="./Screenshots/account_creation_en.png" alt="Account Creation" style="width: 200px;"/>  
-   Accoun Creation view
+   Account Creation view
+   
+   

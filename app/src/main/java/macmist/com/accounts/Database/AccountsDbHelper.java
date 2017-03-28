@@ -22,7 +22,7 @@ public class AccountsDbHelper extends SQLiteOpenHelper {
     public static final String ACCOUNT_COLUMN_AMOUNT = "amount";
 
     // Transaction table definition
-    public static final String TRANSACTION_TABLE_NAME = "account";
+    public static final String TRANSACTION_TABLE_NAME = "transaction_table";
     public static final String TRANSACTION_COLUMN_ID = "_id";
     public static final String TRANSACTION_COLUMN_ACCOUNT_ID = "account_id";
     public static final String TRANSACTION_COLUMN_NAME = "name";
@@ -50,11 +50,11 @@ public class AccountsDbHelper extends SQLiteOpenHelper {
                                     + TRANSACTION_COLUMN_NAME + " TEXT, "
                                     + TRANSACTION_COLUMN_AMOUNT + " REAL NOT NULL, "
                                     + "FOREIGN KEY(" +  TRANSACTION_COLUMN_ACCOUNT_ID
-                                    +") REFERENCES " + ACCOUNT_TABLE_NAME + "(" + ACCOUNT_COLUMN_ID + "))";
+                                    +") REFERENCES " + ACCOUNT_TABLE_NAME + "(" + ACCOUNT_COLUMN_ID + "));";
 
         db.execSQL(transactionCreation);
 
-        String triggerTransaction = "CREATE TRIGGER IF NOT EXISTS AFTER INSERT ON " + TRANSACTION_TABLE_NAME
+        String triggerTransaction = "CREATE TRIGGER IF NOT EXISTS TRANSACTION_TRIGGER  AFTER INSERT ON " + TRANSACTION_TABLE_NAME
                                     + " BEGIN "
                                     + "UPDATE " + ACCOUNT_TABLE_NAME + " SET " + ACCOUNT_COLUMN_AMOUNT
                                     + " = " + ACCOUNT_COLUMN_AMOUNT + " + new." + TRANSACTION_COLUMN_AMOUNT

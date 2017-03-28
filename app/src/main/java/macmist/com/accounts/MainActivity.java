@@ -40,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, CreateAccountActivity.class);
-                intent.putExtra(KEY_EXTRA_CONTACT_ID, -1);
                 startActivity(intent);
             }
         });
@@ -69,10 +68,13 @@ public class MainActivity extends AppCompatActivity {
                                     int position, long id) {
                 Cursor itemCursor = (Cursor) MainActivity.this.listView.getItemAtPosition(position);
                 int accountID = itemCursor.getInt(itemCursor.getColumnIndex(AccountsDbHelper.ACCOUNT_COLUMN_ID));
-                Intent intent = new Intent(getApplicationContext(), CreateAccountActivity.class);
+                Intent intent = new Intent(getApplicationContext(), AccountDetailsActivity.class);
                 intent.putExtra(KEY_EXTRA_CONTACT_ID, accountID);
                 startActivity(intent);
             }
         });
+
+
+
     }
 }

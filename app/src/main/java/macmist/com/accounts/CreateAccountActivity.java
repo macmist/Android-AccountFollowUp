@@ -1,11 +1,9 @@
 package macmist.com.accounts;
 
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ScrollView;
@@ -31,7 +29,7 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.edit_activity);
+        setContentView(R.layout.create_account_activity);
         accountID = getIntent().getIntExtra(MainActivity.KEY_EXTRA_CONTACT_ID, -1);
         nameEditText = (EditText) findViewById(R.id.editTextName);
         amountText = (EditText) findViewById(R.id.editTextAmount);
@@ -42,22 +40,6 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         scrollView = (ScrollView) findViewById(R.id.scrollView1);
 
         helper = new AccountsDbHelper(this);
-        if (accountID > 0) {
-            Cursor cursor = helper.getAccountById(accountID);
-            cursor.moveToFirst();
-            String accountName = cursor.getString(cursor.getColumnIndex(AccountsDbHelper.ACCOUNT_COLUMN_NAME));
-            float accountAmount = cursor.getFloat(cursor.getColumnIndex(AccountsDbHelper.ACCOUNT_COLUMN_AMOUNT));
-            if(!cursor.isClosed())
-                cursor.close();
-
-            nameEditText.setText(accountName);
-            nameEditText.setFocusable(false);
-            nameEditText.setClickable(false);
-
-            amountText.setText((CharSequence)(accountAmount + ""));
-            amountText.setFocusable(false);
-            amountText.setClickable(false);
-        }
 
     }
 

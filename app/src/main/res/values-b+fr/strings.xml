@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Suivi de Comptes</string>
     <string name="hello_message">Bonjour le monde!</string>
+    <string name="title_activity_create_account">Creer un compte</string>
+    <string name="title_activity_account_details">Detils du compte</string>
     <string name="add_account">Ajouter un compte</string>
     <string name="account_name">Nom du compte</string>
     <string name="account_initial_amount">Montant initial</string>
@@ -9,4 +11,5 @@
     <string name="currency">€</string>
     <string name="account_inserted_ok">Compte sauvegardé</string>
     <string name="account_inserted_error">Impossible de sauvegarder le compte</string>
+    <string name="transaction_list_header">Dernières transactions</string>
 </resources>

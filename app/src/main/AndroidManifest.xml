@@ -17,7 +17,10 @@
         </activity>
         <activity
             android:name=".CreateAccountActivity"
-            android:label="@string/title_activity_account_list"/>
+            android:label="@string/title_activity_create_account"/>
+        <activity
+            android:name=".AccountDetailsActivity"
+            android:label="@string/title_activity_account_details"/>
     </application>
 
 </manifest>
