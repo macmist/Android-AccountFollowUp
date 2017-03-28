@@ -27,7 +27,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="5dp"
-        android:ems="10"
+        android:ems="9"
         android:inputType="text"
         android:textSize="@dimen/text_size" >
     </EditText>
@@ -52,7 +52,7 @@
         android:layout_alignStart="@+id/editAccountName"
         android:layout_alignLeft="@+id/editAccountName"
         android:layout_below="@+id/editAccountName"
-        android:ems="10"
+        android:ems="8"
         android:inputType="numberDecimal"
         android:textSize="@dimen/text_size" />
 
@@ -62,15 +62,28 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/accountDetailAmount"
         android:layout_toEndOf="@+id/accountDetailAmount"
+        android:layout_alignBottom="@+id/accountDetailAmount"
         android:text="@string/currency"
         android:textSize="@dimen/text_size"
         />
+
+
+    <Button
+        android:id="@+id/addNewTransaction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/accountDetailAmount"
+        android:layout_margin="@dimen/activity_vertical_margin"
+        android:padding="@dimen/activity_vertical_margin"
+        android:textSize="@dimen/text_size"
+        android:text="@string/add_transaction"/>
 
     <TextView
         android:id="@+id/transactionListHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/accountDetailAmount"
+        android:layout_below="@+id/addNewTransaction"
         android:textSize="@dimen/text_size"
         android:text="@string/transaction_list_header"
         android:layout_marginTop="@dimen/activity_vertical_margin"
@@ -84,5 +97,6 @@
         android:layout_centerVertical="true"
         android:layout_below="@+id/transactionListHeader">
     </ListView>
+
 
 </RelativeLayout>

@@ -28,6 +28,16 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        initView();
+    }
+
+    @Override
+    public void onRestart() {
+        super.onRestart();
+        initView();
+    }
+
+    public void initView() {
         setContentView(R.layout.activity_main);
 
         Display display = getWindowManager().getDefaultDisplay();
@@ -73,8 +83,5 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
-
     }
 }

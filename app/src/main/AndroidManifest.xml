@@ -21,6 +21,8 @@
         <activity
             android:name=".AccountDetailsActivity"
             android:label="@string/title_activity_account_details"/>
+        <activity android:name=".CreateTransactionActivity"
+            android:label="@string/title_activity_create_transaction"/>
     </application>
 
 </manifest>

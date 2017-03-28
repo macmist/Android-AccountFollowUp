@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/scrollView1"
+    android:id="@+id/createTransactionScrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -13,19 +13,19 @@
         android:paddingTop="@dimen/activity_vertical_margin">
 
         <TextView
-            android:id="@+id/textViewName"
+            android:id="@+id/transactionNameTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/editTextName"
-            android:layout_toLeftOf="@+id/editTextName"
-            android:layout_toStartOf="@+id/editTextName"
+            android:layout_alignBottom="@+id/editTextTransactionName"
+            android:layout_toLeftOf="@+id/editTextTransactionName"
+            android:layout_toStartOf="@+id/editTextTransactionName"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:text="@string/account_name"
+            android:text="@string/transaction_name"
             android:textSize="@dimen/text_size" />
 
         <EditText
-            android:id="@+id/editTextName"
+            android:id="@+id/editTextTransactionName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -38,42 +38,39 @@
 
 
         <TextView
-            android:id="@+id/textViewCurrentAmount"
+            android:id="@+id/textViewTransactionAmount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/editTextAmount"
-            android:layout_toLeftOf="@+id/editTextAmount"
-            android:layout_toStartOf="@+id/editTextAmount"
+            android:layout_alignBottom="@+id/editTextTransactionAmount"
+            android:layout_toLeftOf="@+id/editTextTransactionAmount"
+            android:layout_toStartOf="@+id/editTextTransactionAmount"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:text="@string/account_amount"
+            android:text="@string/transaction_amount"
             android:textSize="@dimen/text_size" />
 
         <EditText
-            android:id="@+id/editTextAmount"
+            android:id="@+id/editTextTransactionAmount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/editTextName"
-            android:layout_alignLeft="@+id/editTextName"
-            android:layout_below="@+id/editTextName"
+            android:layout_alignStart="@+id/editTextTransactionName"
+            android:layout_alignLeft="@+id/editTextTransactionName"
+            android:layout_below="@+id/editTextTransactionName"
             android:ems="10"
             android:inputType="numberDecimal|numberSigned"
             android:textSize="@dimen/text_size" />
 
 
-
-
-
         <Button
-            android:id="@+id/saveButton"
+            android:id="@+id/saveTransactionButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_below="@+id/editTextAmount"
+            android:layout_below="@+id/editTextTransactionAmount"
             android:layout_alignParentBottom="true"
             android:padding="@dimen/activity_vertical_margin"
             android:layout_margin="@dimen/activity_vertical_margin"
-            android:text="@string/account_save"
+            android:text="@string/transaction_save"
             android:textSize="@dimen/text_size" />
 
     </RelativeLayout>

@@ -12,4 +12,8 @@
     <string name="account_inserted_ok">Compte sauvegardé</string>
     <string name="account_inserted_error">Impossible de sauvegarder le compte</string>
     <string name="transaction_list_header">Dernières transactions</string>
+    <string name="transaction_name">Nom de la transaction</string>
+    <string name="transaction_amount">Montant de la transaction</string>
+    <string name="transaction_save">Sauvegarder transaction</string>
+    <string name="add_transaction">Nouvelle transaction</string>
 </resources>

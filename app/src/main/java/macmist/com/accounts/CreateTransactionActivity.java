@@ -12,11 +12,11 @@ import android.widget.Toast;
 import macmist.com.accounts.Database.AccountsDbHelper;
 
 /**
- * Created by quentin on 28/03/2017.
+ * Created by quentin on 29/03/2017.
  */
-public class CreateAccountActivity extends AppCompatActivity implements View.OnClickListener {
+public class CreateTransactionActivity extends AppCompatActivity implements View.OnClickListener {
     private AccountsDbHelper helper;
-
+    int accountId;
     EditText nameEditText;
     EditText amountText;
 
@@ -24,16 +24,19 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
 
     ScrollView scrollView;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.create_account_activity);
+        setContentView(R.layout.create_transaction_activity);
 
-        nameEditText = (EditText) findViewById(R.id.editTextName);
-        amountText = (EditText) findViewById(R.id.editTextAmount);
+        accountId = getIntent().getIntExtra(MainActivity.KEY_EXTRA_CONTACT_ID, -1);
 
-        saveButton = (Button) findViewById(R.id.saveButton);
+        nameEditText = (EditText) findViewById(R.id.editTextTransactionName);
+        amountText = (EditText) findViewById(R.id.editTextTransactionAmount);
+
+        saveButton = (Button) findViewById(R.id.saveTransactionButton);
         saveButton.setOnClickListener(this);
 
         scrollView = (ScrollView) findViewById(R.id.scrollView1);
@@ -44,15 +47,16 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
 
     @Override
     public void onClick(View view) {
-        if(helper.insertAccount(nameEditText.getText().toString(),
+        if(helper.insertTransaction(accountId, nameEditText.getText().toString(),
                 Float.parseFloat(amountText.getText().toString()))) {
             Toast.makeText(getApplicationContext(), getString(R.string.account_inserted_ok), Toast.LENGTH_SHORT).show();
         }
         else{
             Toast.makeText(getApplicationContext(), getString(R.string.account_inserted_error), Toast.LENGTH_SHORT).show();
         }
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        Intent intent = new Intent(getApplicationContext(), AccountDetailsActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra(MainActivity.KEY_EXTRA_CONTACT_ID, accountId);
         startActivity(intent);
     }
 }
