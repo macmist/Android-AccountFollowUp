@@ -58,7 +58,7 @@ public class CreateOrEditActivity extends AppCompatActivity implements View.OnCl
     @Override
     public void onClick(View view) {
         if(helper.insertAccount(nameEditText.getText().toString(),
-                Integer.parseInt(amountText.getText().toString()))) {
+                Float.parseFloat(amountText.getText().toString()))) {
             Toast.makeText(getApplicationContext(), "Account Inserted", Toast.LENGTH_SHORT).show();
         }
         else{

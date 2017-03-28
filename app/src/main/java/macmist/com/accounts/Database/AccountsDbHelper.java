@@ -66,7 +66,7 @@ public class AccountsDbHelper extends SQLiteOpenHelper {
     // # Operations on account table
 
     // Insertion
-    public boolean insertAccount(String name, int amount) {
+    public boolean insertAccount(String name, float amount) {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(ACCOUNT_COLUMN_NAME, name);
@@ -77,7 +77,7 @@ public class AccountsDbHelper extends SQLiteOpenHelper {
     }
 
     // Update
-    public boolean updateAccount(int id, String name, int initialAmount, int amount) {
+    public boolean updateAccount(int id, String name, float initialAmount, float amount) {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(ACCOUNT_COLUMN_NAME, name);
@@ -104,7 +104,7 @@ public class AccountsDbHelper extends SQLiteOpenHelper {
     // # Operations on transaction table
 
     // Insertion
-    public boolean insertTransaction(int account, String name, int amount) {
+    public boolean insertTransaction(int account, String name, float amount) {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(TRANSACTION_COLUMN_ACCOUNT_ID, account);
@@ -115,7 +115,7 @@ public class AccountsDbHelper extends SQLiteOpenHelper {
     }
 
     // Update
-    public boolean updateTransaction(int id, int account, String name, int amount) {
+    public boolean updateTransaction(int id, int account, String name, float amount) {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(TRANSACTION_COLUMN_ACCOUNT_ID, account);
