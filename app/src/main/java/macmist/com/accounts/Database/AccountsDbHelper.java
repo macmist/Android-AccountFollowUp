@@ -53,6 +53,14 @@ public class AccountsDbHelper extends SQLiteOpenHelper {
                                     +") REFERENCES " + ACCOUNT_TABLE_NAME + "(" + ACCOUNT_COLUMN_ID + "))";
 
         db.execSQL(transactionCreation);
+
+        String triggerTransaction = "CREATE TRIGGER IF NOT EXISTS AFTER INSERT ON " + TRANSACTION_TABLE_NAME
+                                    + " BEGIN "
+                                    + "UPDATE " + ACCOUNT_TABLE_NAME + " SET " + ACCOUNT_COLUMN_AMOUNT
+                                    + " = " + ACCOUNT_COLUMN_AMOUNT + " + new." + TRANSACTION_COLUMN_AMOUNT
+                                    + " WHERE " + ACCOUNT_COLUMN_ID + " = new." + TRANSACTION_COLUMN_ACCOUNT_ID + ";"
+                                    + " END";
+        db.execSQL(triggerTransaction);
     }
 
     @Override

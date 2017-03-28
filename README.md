@@ -21,6 +21,7 @@ It is not builded in order to replace any bank app or whatever.
     * Possility to view an account details by clicking on it
     * Better display
     * Toast messages now available in french
+    * Add a trigger that changes account amount when inserting an entry in transaction
     
 ## Screenshots
 (will change in time)

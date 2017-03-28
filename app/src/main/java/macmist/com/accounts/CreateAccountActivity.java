@@ -16,7 +16,7 @@ import macmist.com.accounts.Database.AccountsDbHelper;
 /**
  * Created by quentin on 28/03/2017.
  */
-public class CreateOrEditActivity extends AppCompatActivity implements View.OnClickListener {
+public class CreateAccountActivity extends AppCompatActivity implements View.OnClickListener {
     private AccountsDbHelper helper;
     int accountID;
 
