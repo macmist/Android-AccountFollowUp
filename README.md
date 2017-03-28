@@ -25,12 +25,18 @@ It is not builded in order to replace any bank app or whatever.
 - 03/29/2017 :
     * Corrected an issue with names in database
     * Separated create and details activity for account
+    * Add transaction creation
+    * Refresh main view when pressing back
+    * Support negative numbers
     
 ## Screenshots
 (will change in time)
-<img src="./Screenshots/acount_list_en.png" alt="Account List" style="width: 200px;"/>  
+<img src="./Screenshots/account_list.png" alt="Account List" style="width: 200px;"/>  
    Main view
 <img src="./Screenshots/account_creation_en.png" alt="Account Creation" style="width: 200px;"/>  
    Account Creation view
+   
+<img src="./Screenshots/account_details.png" alt="Account Creation" style="width: 200px;"/>  
+  Account Details view
    
    
