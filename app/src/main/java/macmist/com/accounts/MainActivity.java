@@ -2,8 +2,10 @@ package macmist.com.accounts;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Point;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Display;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -17,11 +19,21 @@ public class MainActivity extends AppCompatActivity {
 
     private ListView listView;
     AccountsDbHelper helper;
+    private static Point screenSize;
+
+    public static Point getScreenSize() {
+        return  screenSize;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Display display = getWindowManager().getDefaultDisplay();
+        screenSize = new Point();
+        display.getSize(screenSize);
+
 
         Button button = (Button) findViewById(R.id.addNew);
         button.setOnClickListener(new View.OnClickListener() {

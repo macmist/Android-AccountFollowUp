@@ -7,4 +7,6 @@
     <string name="account_amount">Montant actuel</string>
     <string name="account_save">Sauvegarder</string>
     <string name="currency">€</string>
+    <string name="account_inserted_ok">Compte sauvegardé</string>
+    <string name="account_inserted_error">Impossible de sauvegarder le compte</string>
 </resources>

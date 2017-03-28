@@ -8,4 +8,6 @@
     <string name="account_amount">Current amount</string>
     <string name="account_save">Save</string>
     <string name="currency">£</string>
+    <string name="account_inserted_ok">Account saved</string>
+    <string name="account_inserted_error">Could not save account</string>
 </resources>
