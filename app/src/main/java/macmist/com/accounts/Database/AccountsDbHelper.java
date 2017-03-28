@@ -16,14 +16,14 @@ public class AccountsDbHelper extends SQLiteOpenHelper {
 
     // Account table definition
     public static final String ACCOUNT_TABLE_NAME = "account";
-    public static final String ACCOUNT_COLUMN_ID = "id";
+    public static final String ACCOUNT_COLUMN_ID = "_id";
     public static final String ACCOUNT_COLUMN_NAME = "name";
     public static final String ACCOUNT_COLUMN_INITIAL_AMOUNT = "initial_amount";
     public static final String ACCOUNT_COLUMN_AMOUNT = "amount";
 
     // Transaction table definition
     public static final String TRANSACTION_TABLE_NAME = "account";
-    public static final String TRANSACTION_COLUMN_ID = "id";
+    public static final String TRANSACTION_COLUMN_ID = "_id";
     public static final String TRANSACTION_COLUMN_ACCOUNT_ID = "account_id";
     public static final String TRANSACTION_COLUMN_NAME = "name";
     public static final String TRANSACTION_COLUMN_AMOUNT = "amount";
@@ -39,8 +39,8 @@ public class AccountsDbHelper extends SQLiteOpenHelper {
         String accountCreation = "CREATE TABLE IF NOT EXISTS " + ACCOUNT_TABLE_NAME + "("
                                 + ACCOUNT_COLUMN_ID + " INTEGER PRIMARY KEY, "
                                 + ACCOUNT_COLUMN_NAME + " TEXT NOT NULL, "
-                                + ACCOUNT_COLUMN_INITIAL_AMOUNT + " INTEGER NOT NULL, "
-                                + ACCOUNT_COLUMN_AMOUNT + " INTEGER NOT NULL)";
+                                + ACCOUNT_COLUMN_INITIAL_AMOUNT + " REAL NOT NULL, "
+                                + ACCOUNT_COLUMN_AMOUNT + " REAL NOT NULL)";
         db.execSQL(accountCreation);
 
         // Then the transaction table with account foreign key
@@ -48,7 +48,7 @@ public class AccountsDbHelper extends SQLiteOpenHelper {
                                     + TRANSACTION_COLUMN_ID + " INTEGER PRIMARY KEY, "
                                     + TRANSACTION_COLUMN_ACCOUNT_ID + " INTEGER, "
                                     + TRANSACTION_COLUMN_NAME + " TEXT, "
-                                    + TRANSACTION_COLUMN_AMOUNT + " INTEGER NOT NULL, "
+                                    + TRANSACTION_COLUMN_AMOUNT + " REAL NOT NULL, "
                                     + "FOREIGN KEY(" +  TRANSACTION_COLUMN_ACCOUNT_ID
                                     +") REFERENCES " + ACCOUNT_TABLE_NAME + "(" + ACCOUNT_COLUMN_ID + "))";
 
