@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">Accounts Follow Up</string>
     <string name="hello_message">Hello World!</string>
+    <string name="title_activity_account_list">account_list</string>
+    <string name="add_account">Add account</string>
+    <string name="account_name">Account name</string>
+    <string name="account_initial_amount">Initial amount</string>
+    <string name="account_amount">Current amount</string>
+    <string name="account_save">Save</string>
 </resources>

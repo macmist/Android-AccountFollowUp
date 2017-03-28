@@ -15,6 +15,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".CreateOrEditActivity"
+            android:label="@string/title_activity_account_list"/>
     </application>
 
 </manifest>
