@@ -30,7 +30,7 @@ It is not builded in order to replace any bank app or whatever.
     * Support negative numbers
     
 ## Screenshots
-(will change in time)
+(will change in time)  
 <img src="./Screenshots/account_list.png" alt="Account List" style="width: 200px; height:125px;"/>  
    Main view  
    
