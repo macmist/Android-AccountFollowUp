@@ -67,6 +67,14 @@ public class AccountsDbHelper extends SQLiteOpenHelper {
                                     + " WHERE " + ACCOUNT_COLUMN_ID + " = new." + TRANSACTION_COLUMN_ACCOUNT_ID + ";"
                                     + " END";
         db.execSQL(triggerTransaction);
+
+        String triggerDeleteTransaction = "CREATE TRIGGER IF NOT EXISTS DELETE_TRANSACTION_TRIGGER  AFTER DELETE ON " + TRANSACTION_TABLE_NAME
+                + " BEGIN "
+                + "UPDATE " + ACCOUNT_TABLE_NAME + " SET " + ACCOUNT_COLUMN_AMOUNT
+                + " = " + ACCOUNT_COLUMN_AMOUNT + " - old." + TRANSACTION_COLUMN_AMOUNT
+                + " WHERE " + ACCOUNT_COLUMN_ID + " = old." + TRANSACTION_COLUMN_ACCOUNT_ID + ";"
+                + " END";
+        db.execSQL(triggerDeleteTransaction);
     }
 
     @Override
@@ -163,5 +171,11 @@ public class AccountsDbHelper extends SQLiteOpenHelper {
         Cursor res = db.rawQuery( "SELECT * FROM " + TRANSACTION_TABLE_NAME + " WHERE " +
                 TRANSACTION_COLUMN_ACCOUNT_ID + "=?", new String[] { Integer.toString(account) }  );
         return res;
+    }
+
+    public Integer deleteTransaction(int id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        return db.delete(TRANSACTION_TABLE_NAME, TRANSACTION_COLUMN_ID + " = ? ",
+                new String[] {Integer.toString(id)});
     }
 }

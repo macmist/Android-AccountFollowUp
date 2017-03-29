@@ -1,8 +1,10 @@
 package macmist.com.accounts;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -73,6 +75,14 @@ public class AccountDetailsActivity extends AppCompatActivity {
     }
 
     public void initListView() {
+
+        listView = (ListView) findViewById(R.id.transactionList);
+        //
+        initAdaptor();
+        addListenersToList();
+    }
+
+    public void initAdaptor() {
         final Cursor transactions = helper.getAccountTransactions(accountID);
         String[] columns = new String[] {
                 AccountsDbHelper.TRANSACTION_COLUMN_ID,
@@ -88,8 +98,10 @@ public class AccountDetailsActivity extends AppCompatActivity {
         };
 
         SimpleCursorAdapter cursorAdapter = new SimpleCursorAdapter(this, R.layout.transaction_list, transactions, columns, widgets, 0);
-        listView = (ListView) findViewById(R.id.transactionList);
         listView.setAdapter(cursorAdapter);
+    }
+
+    public void addListenersToList() {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView listView, View view, int position, long id) {
@@ -98,6 +110,37 @@ public class AccountDetailsActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "transaction " + accountID, Toast.LENGTH_SHORT).show();
             }
         });
+
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                Cursor itemCursor = (Cursor) AccountDetailsActivity.this.listView.getItemAtPosition(position);
+                final int transactionId = itemCursor.getInt(itemCursor.getColumnIndex(AccountsDbHelper.TRANSACTION_COLUMN_ID));
+                DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        switch (which){
+                            case DialogInterface.BUTTON_POSITIVE:
+                                helper.deleteTransaction(transactionId);
+                                setAccountInfoToView();
+                                initAdaptor();
+                                break;
+
+                            case DialogInterface.BUTTON_NEGATIVE:
+                                //No button clicked
+                                break;
+                        }
+                    }
+                };
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                builder.setMessage("Are you sure?").setPositiveButton("Yes", dialogClickListener)
+                        .setNegativeButton("No", dialogClickListener).show();
+                return false;
+            }
+        });
+
     }
 
 }
