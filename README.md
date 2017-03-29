@@ -28,6 +28,8 @@ It is not builded in order to replace any bank app or whatever.
     * Add transaction creation
     * Refresh main view when pressing back
     * Support negative numbers
+    * Add a trigger that changes account amount when deleting a transaction
+    * Can now delete a transaction
     
 ## Screenshots
 (will change in time)  
