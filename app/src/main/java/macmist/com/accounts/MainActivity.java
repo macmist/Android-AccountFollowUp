@@ -19,32 +19,28 @@ public class MainActivity extends AppCompatActivity {
 
     private ListView listView;
     AccountsDbHelper helper;
-    private static Point screenSize;
 
-    public static Point getScreenSize() {
-        return  screenSize;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        helper = new AccountsDbHelper(this);
         initView();
     }
 
     @Override
     public void onRestart() {
         super.onRestart();
-        initView();
+        initListView();
     }
 
     public void initView() {
-        setContentView(R.layout.activity_main);
+        initButton();
+        initListView();
+    }
 
-        Display display = getWindowManager().getDefaultDisplay();
-        screenSize = new Point();
-        display.getSize(screenSize);
-
-
+    public void initButton() {
         Button button = (Button) findViewById(R.id.addNew);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,9 +49,9 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
 
-        helper = new AccountsDbHelper(this);
-
+    public void initListView() {
         final Cursor cursor = helper.getAllAccounts();
 
         String [] columns = new String[] {
