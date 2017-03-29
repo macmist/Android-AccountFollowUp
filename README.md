@@ -31,12 +31,12 @@ It is not builded in order to replace any bank app or whatever.
     
 ## Screenshots
 (will change in time)
-<img src="./Screenshots/account_list.png" alt="Account List" style="width: 200px;"/>  
+<img src="./Screenshots/account_list.png" alt="Account List" style="width: 200px; height:125px;"/>  
    Main view
-<img src="./Screenshots/account_creation_en.png" alt="Account Creation" style="width: 200px;"/>  
+<img src="./Screenshots/account_creation_en.png" alt="Account Creation" style="width: 125px; height:200px;"/>  
    Account Creation view
    
-<img src="./Screenshots/account_details.png" alt="Account Creation" style="width: 200px;"/>  
+<img src="./Screenshots/account_details.png" alt="Account Creation" style="width: 200px; height:125px;"/>  
   Account Details view
    
    
