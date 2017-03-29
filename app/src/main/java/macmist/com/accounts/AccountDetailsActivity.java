@@ -76,11 +76,13 @@ public class AccountDetailsActivity extends AppCompatActivity {
         final Cursor transactions = helper.getAccountTransactions(accountID);
         String[] columns = new String[] {
                 AccountsDbHelper.TRANSACTION_COLUMN_ID,
+                AccountsDbHelper.TRANSACTION_COLUMN_DATE,
                 AccountsDbHelper.TRANSACTION_COLUMN_NAME,
                 AccountsDbHelper.TRANSACTION_COLUMN_AMOUNT,
         };
         int[] widgets = new int[] {
                 R.id.transactionId,
+                R.id.transactionDate,
                 R.id.transactionName,
                 R.id.transactionAmount
         };

@@ -6,6 +6,10 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * Created by quentin on 27/03/2017.
  */
@@ -25,6 +29,7 @@ public class AccountsDbHelper extends SQLiteOpenHelper {
     public static final String TRANSACTION_TABLE_NAME = "transaction_table";
     public static final String TRANSACTION_COLUMN_ID = "_id";
     public static final String TRANSACTION_COLUMN_ACCOUNT_ID = "account_id";
+    public static final String TRANSACTION_COLUMN_DATE = "date";
     public static final String TRANSACTION_COLUMN_NAME = "name";
     public static final String TRANSACTION_COLUMN_AMOUNT = "amount";
 
@@ -47,6 +52,7 @@ public class AccountsDbHelper extends SQLiteOpenHelper {
         String transactionCreation = "CREATE TABLE IF NOT EXISTS " + TRANSACTION_TABLE_NAME + "("
                                     + TRANSACTION_COLUMN_ID + " INTEGER PRIMARY KEY, "
                                     + TRANSACTION_COLUMN_ACCOUNT_ID + " INTEGER, "
+                                    + TRANSACTION_COLUMN_DATE + " TEXT NOT NULL, "
                                     + TRANSACTION_COLUMN_NAME + " TEXT, "
                                     + TRANSACTION_COLUMN_AMOUNT + " REAL NOT NULL, "
                                     + "FOREIGN KEY(" +  TRANSACTION_COLUMN_ACCOUNT_ID
@@ -114,8 +120,14 @@ public class AccountsDbHelper extends SQLiteOpenHelper {
     // Insertion
     public boolean insertTransaction(int account, String name, float amount) {
         SQLiteDatabase db = getWritableDatabase();
+
+        DateFormat sdf = SimpleDateFormat.getDateInstance();
+        String date = sdf.format(new Date());
+
+
         ContentValues contentValues = new ContentValues();
         contentValues.put(TRANSACTION_COLUMN_ACCOUNT_ID, account);
+        contentValues.put(TRANSACTION_COLUMN_DATE, date);
         contentValues.put(TRANSACTION_COLUMN_NAME, name);
         contentValues.put(TRANSACTION_COLUMN_AMOUNT, amount);
         long res = db.insert(TRANSACTION_TABLE_NAME, null, contentValues);
