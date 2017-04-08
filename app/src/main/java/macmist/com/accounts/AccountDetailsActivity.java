@@ -102,14 +102,6 @@ public class AccountDetailsActivity extends AppCompatActivity {
     }
 
     public void addListenersToList() {
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView listView, View view, int position, long id) {
-                Cursor itemCursor = (Cursor) AccountDetailsActivity.this.listView.getItemAtPosition(position);
-                int accountID = itemCursor.getInt(itemCursor.getColumnIndex(AccountsDbHelper.TRANSACTION_COLUMN_ID));
-                Toast.makeText(getApplicationContext(), "transaction " + accountID, Toast.LENGTH_SHORT).show();
-            }
-        });
 
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
 
@@ -135,8 +127,8 @@ public class AccountDetailsActivity extends AppCompatActivity {
                 };
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
-                builder.setMessage("Are you sure?").setPositiveButton("Yes", dialogClickListener)
-                        .setNegativeButton("No", dialogClickListener).show();
+                builder.setMessage(R.string.delete_transaction_dialog).setPositiveButton(R.string.yes, dialogClickListener)
+                        .setNegativeButton(R.string.no, dialogClickListener).show();
                 return false;
             }
         });

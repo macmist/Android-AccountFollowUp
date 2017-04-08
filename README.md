@@ -30,6 +30,10 @@ It is not builded in order to replace any bank app or whatever.
     * Support negative numbers
     * Add a trigger that changes account amount when deleting a transaction
     * Can now delete a transaction
+- 04/08/2017:
+    * Transaction are now presented in descending order
+    * Removed an useless indication on transaction list
+    * Possibility to remove an account on long click
     
 ## Screenshots
 (will change in time)  

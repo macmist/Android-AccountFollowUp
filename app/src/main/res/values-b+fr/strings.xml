@@ -16,4 +16,9 @@
     <string name="transaction_amount">Montant de la transaction</string>
     <string name="transaction_save">Sauvegarder transaction</string>
     <string name="add_transaction">Nouvelle transaction</string>
+    <string name="delete_btn">Supprimer item</string>
+    <string name="delete_transaction_dialog">Supprimer cette transaction ?</string>
+    <string name="delete_account_dialog">Supprimer ce compte ?</string>
+    <string name="yes">Oui</string>
+    <string name="no">Non</string>
 </resources>

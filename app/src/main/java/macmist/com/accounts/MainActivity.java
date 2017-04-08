@@ -1,8 +1,10 @@
 package macmist.com.accounts;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Point;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Display;
@@ -52,6 +54,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void initListView() {
+        listView = (ListView)findViewById(R.id.listView1);
+        initAdaptor();
+        addListenersToList();
+    }
+
+    public void initAdaptor() {
         final Cursor cursor = helper.getAllAccounts();
 
         String [] columns = new String[] {
@@ -64,10 +72,11 @@ public class MainActivity extends AppCompatActivity {
                 R.id.accountName,
                 R.id.accountAmount
         };
-
         SimpleCursorAdapter cursorAdapter = new SimpleCursorAdapter(this, R.layout.account_list, cursor, columns, widgets, 0);
-        listView = (ListView)findViewById(R.id.listView1);
         listView.setAdapter(cursorAdapter);
+    }
+
+    public void addListenersToList() {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView listView, View view,
@@ -79,5 +88,34 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                Cursor itemCursor = (Cursor)MainActivity.this.listView.getItemAtPosition(position);
+                final int accountId = itemCursor.getInt(itemCursor.getColumnIndex(AccountsDbHelper.ACCOUNT_COLUMN_ID));
+                DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        switch (which){
+                            case DialogInterface.BUTTON_POSITIVE:
+                                helper.deleteAccount(accountId);
+                                initAdaptor();
+                                break;
+
+                            case DialogInterface.BUTTON_NEGATIVE:
+                                //No button clicked
+                                break;
+                        }
+                    }
+                };
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                builder.setMessage(R.string.delete_account_dialog).setPositiveButton(R.string.yes, dialogClickListener)
+                        .setNegativeButton(R.string.no, dialogClickListener).show();
+                return true;
+            }
+        });
+
     }
 }
